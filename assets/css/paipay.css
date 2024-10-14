@@ -1,0 +1,56 @@
+/* Fondo de pantalla */
+body {
+   
+    background-position: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image: url(../img/contacto.jpg);
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 6rem 0;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: black;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Alerta de información */
+.alert-info {
+    background-color: rgba(0, 123, 255, 0.3);
+    border: 1px solid rgba(0, 123, 255, 0.5);
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+/* Botón de PayPal */
+#paypal-botton-container {
+    margin-top: 20px;
+}
+
+.text-center p {
+    color: #fff;
+}
+
+/* Adaptación para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+}
