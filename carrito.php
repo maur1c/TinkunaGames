@@ -112,12 +112,11 @@ foreach ($carrito as $item) {
     <footer class="footer-section">
         <div class="copyright-area">
             <div class="container-footer">
-                <p>TinkunaGames &copy; 2024, todos los derechos reservados</p>
+                <p style="color: #fff">TinkunaGames &copy; 2024, todos los derechos reservados</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="assets/js/iconos.js"></script>

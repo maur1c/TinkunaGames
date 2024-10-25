@@ -8,6 +8,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
+
 // Consultar productos desde la base de datos
 $query = $conn->query("SELECT * FROM productos");
 $productos = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los productos
@@ -40,7 +41,6 @@ $productos = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los productos
             </li>
             <li class="car">
               <a href="carrito.php" class="bi bi-cart3"><i class="fas fa-shopping-cart"></i></a>
-              
             </li>
           </ul>
         </nav>

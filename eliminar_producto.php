@@ -2,7 +2,8 @@
 include 'conexion.php';
 session_start();
 
-if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_id'] != 1) {
+// Verificar si el usuario está autenticado y es un administrador
+if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 1) { // Suponiendo que el ID del rol 'admin' es 1
     header('Location: login.php');
     exit();
 }

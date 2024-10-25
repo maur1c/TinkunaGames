@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 14-10-2024 a las 19:12:05
+-- Tiempo de generación: 15-10-2024 a las 20:29:59
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -96,7 +96,11 @@ INSERT INTO `historial_de_compra` (`id`, `usuario_id`, `producto_id`, `cantidad`
 (16, 1, 8, 1, 23.00, '2024-10-14 08:39:26'),
 (17, 1, 8, 1, 23.00, '2024-10-14 08:39:26'),
 (18, 1, 8, 1, 23.00, '2024-10-14 08:39:26'),
-(19, 1, 2, 1, 24.00, '2024-10-14 14:59:49');
+(19, 1, 2, 1, 24.00, '2024-10-14 14:59:49'),
+(20, 1, 2, 1, 24.00, '2024-10-14 16:51:36'),
+(21, 1, 2, 1, 24.00, '2024-10-15 15:47:34'),
+(22, 1, 8, 1, 23.00, '2024-10-15 15:50:21'),
+(23, 1, 2, 1, 24.00, '2024-10-15 15:52:51');
 
 -- --------------------------------------------------------
 
@@ -221,7 +225,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
@@ -233,7 +237,7 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `historial_de_compra`
 --
 ALTER TABLE `historial_de_compra`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`

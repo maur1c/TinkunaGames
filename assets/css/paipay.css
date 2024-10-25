@@ -10,8 +10,8 @@ body {
     align-items: center;
     min-height: 100vh;
 
-    background-image: url(../img/contacto.jpg);
-    background-size: 100vw 100vh;
+    background-image: url(../imag/logo2.jpeg);
+    background-size: 15vw 15vh;
     background-attachment: fixed;
     margin: 0;
     padding: 6rem 0;
@@ -53,4 +53,18 @@ body {
         width: 95%;
         padding: 1rem;
     }
+}
+.btn-success {
+    background-color: #28a745; /* Color de fondo verde */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cursor en forma de mano */
+    transition: background-color 0.3s; /* Efecto de transición */
+
+    &:hover {
+        background-color: #218838; /* Color de fondo hover */
+    }
+    
 }

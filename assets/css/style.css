@@ -16,7 +16,7 @@ img{
 }
 
 .button{
-    background:#DF691A;
+    background:#000000;
     text-decoration: none;
     padding: 15px;
     margin-top: 15px;
@@ -34,7 +34,7 @@ img{
 
 /*menu*/
 header{
-    background:#660000;
+    background:#CE8B27;
     color:#f2f2f2;
     padding: 1rem 0;
     position: fixed;
@@ -59,7 +59,7 @@ header a{
     flex-wrap: wrap;
 }
 .logo{
-    color: #CE8B27;
+    color: #ffffff;
     font-size: 20x;
     font-weight: 700;
 }
@@ -78,7 +78,7 @@ header a{
     display: block;
     padding: 0 1rem;
     font-weight: 100;
-    color:#CE8B27
+    color:#fff;
 }
 .navigation ul li a:hover{
     color: #f2f2f2;
@@ -177,7 +177,7 @@ header a{
 
 main{
     padding-top: 6rem;
-    background-color: #5B722D;
+    background-color: #f2f2f2;
 }
 
 /*slider*/
@@ -194,7 +194,7 @@ main{
     animation: cambio 20s infinite;
     animation-direction: alternate;
     animation-timing-function:linear;
-    background-color: #5B722D;
+    background-color: #f2f2f2;
 }
 .slider li{
     list-style: none;
@@ -222,7 +222,7 @@ main{
     display:flex; 
     width: 100%;
     padding: 20px;
-    background-color: #5B722D;
+    background-color: #f2f2f2;
 }
 .container-imagen{
     width: 33%;
@@ -261,7 +261,7 @@ main{
 
 /*contacto*/
 .container-contacto{
-    background-image: url("../img/contacto.jpg");
+    background-image: url("../imag/logo2.jpeg");
     background-size: 100vw 100vh;
     background-attachment: fixed;
     margin:0;
@@ -349,12 +349,12 @@ main{
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
-    background-color: #5B722D;
+    background-color: #f2f2f2;
 }
 .container-productos .card{
     width: 260px;
     height: 390px;
-    background: #4E5D6C;
+    background: #fff;
     color:#f2f2f2;
     border-radius: 8px;
     border:1px solid  #DF691A;
@@ -504,16 +504,16 @@ main{
     max-width: 1140px;
 }
 .copyright-area{
-  background: #660000;
+  background: #F4961B;
   padding: 25px 0;
 }
 .copyright-text p {
   margin: 0;
   font-size: 14px;
-  color: #878787;
+  color: #fff;
 }
 .copyright-text p a{
-  color: #ff5e14;
+  color: #fff;
   text-decoration: none;
 }
 .footer-menu {
@@ -581,7 +581,7 @@ main{
 
 *, ::after, ::before {
     box-sizing: border-box;
-    color:#CE8B27
+    color:#000000
 }
 .container-footer {
     width: 100%;
@@ -678,7 +678,7 @@ main{
 }
 /*///*/
 .location {
-    background-color: #00701a;
+    background-color: lemonchiffon;
     padding: 0.5rem;
     border-radius: 4px;
     max-width: 200px;
