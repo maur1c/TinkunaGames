@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute([$nombre, $descripcion, $precio, $imagen]);
 
     echo "Producto añadido con éxito";
-    header('Location: admin_productos.php');
+    header('Location: lista_producto.php');
     exit();
 }
 

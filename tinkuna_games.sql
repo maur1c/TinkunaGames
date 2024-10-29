@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 15-10-2024 a las 20:29:59
+-- Tiempo de generación: 29-10-2024 a las 19:53:52
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -56,7 +56,9 @@ CREATE TABLE `contactos` (
 INSERT INTO `contactos` (`id`, `nombre`, `email`, `asunto`, `mensaje`, `fecha`) VALUES
 (1, 'alex', 'daiservicios4@gmail.com', 'hola', 'juegos rpg', '2024-09-28 20:36:19'),
 (2, 'Mauricio', 'mauri@gmail.com', 'tarea', 'holaaaaaaa', '2024-10-02 20:37:58'),
-(3, 'arke', 'mauri@gmail.com', 'juego', 'holaaaaaa32', '2024-10-02 20:41:25');
+(3, 'arke', 'mauri@gmail.com', 'juego', 'holaaaaaa32', '2024-10-02 20:41:25'),
+(4, 'mauri', 'mauriciomamaniflores09@gmail.com', 'pruebas unitarias', 'pruebas ', '2024-10-28 19:46:03'),
+(5, 'mauri', 'mauriciomamaniflores09@gmail.com', 'pruebas unitarias', 'Pruebas ', '2024-10-28 19:47:44');
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,6 @@ INSERT INTO `historial_de_compra` (`id`, `usuario_id`, `producto_id`, `cantidad`
 (5, 1, 2, 1, 24.00, '2024-10-11 15:39:56'),
 (6, 1, 6, 1, 300.00, '2024-10-11 15:43:40'),
 (7, 1, 8, 1, 23.00, '2024-10-11 15:48:47'),
-(8, 1, 9, 1, 600.00, '2024-10-11 15:51:15'),
 (9, 1, 6, 1, 300.00, '2024-10-11 15:59:51'),
 (10, 1, 2, 1, 24.00, '2024-10-11 16:02:32'),
 (11, 1, 6, 1, 300.00, '2024-10-11 16:03:29'),
@@ -100,7 +101,22 @@ INSERT INTO `historial_de_compra` (`id`, `usuario_id`, `producto_id`, `cantidad`
 (20, 1, 2, 1, 24.00, '2024-10-14 16:51:36'),
 (21, 1, 2, 1, 24.00, '2024-10-15 15:47:34'),
 (22, 1, 8, 1, 23.00, '2024-10-15 15:50:21'),
-(23, 1, 2, 1, 24.00, '2024-10-15 15:52:51');
+(23, 1, 2, 1, 24.00, '2024-10-15 15:52:51'),
+(24, 1, 2, 1, 24.00, '2024-10-19 17:37:45'),
+(25, 1, 2, 1, 24.00, '2024-10-19 17:45:17'),
+(26, 1, 2, 1, 24.00, '2024-10-21 15:10:52'),
+(27, 1, 2, 1, 24.00, '2024-10-21 15:15:34'),
+(28, 8, 10, 1, 10.00, '2024-10-21 17:33:01'),
+(29, 8, 10, 1, 10.00, '2024-10-21 17:36:56'),
+(30, 8, 10, 1, 10.00, '2024-10-21 17:40:10'),
+(31, 1, 10, 1, 10.00, '2024-10-21 17:50:16'),
+(32, 8, 10, 1, 10.00, '2024-10-21 17:53:55'),
+(33, 10, 10, 1, 10.00, '2024-10-21 18:03:30'),
+(34, 10, 10, 1, 10.00, '2024-10-21 18:04:29'),
+(35, 11, 10, 1, 10.00, '2024-10-21 18:26:20'),
+(36, 7, 2, 1, 20.00, '2024-10-22 17:16:40'),
+(37, 1, 12, 1, 5.00, '2024-10-28 15:56:29'),
+(38, 1, 11, 1, 5.00, '2024-10-28 15:56:29');
 
 -- --------------------------------------------------------
 
@@ -143,11 +159,33 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`) VALUES
-(2, 'arke', 'juego', 24.00, 'Ark Nova.jpg'),
+(2, 'arke', 'juego', 20.00, 'Ark Nova.jpg'),
 (6, 'catan', 'juego', 300.00, 'imagesCATAN.jpeg'),
 (7, 'zombiecide', 'juego', 400.00, 'zombicide.jpg'),
 (8, 'arke', 'juego', 23.00, 'Ark Nova.jpg'),
-(9, 'zombiecide', 'juego numero2', 600.00, 'zombicide.jpg');
+(10, 'zombie', 'juegos buenos', 10.00, 'zombicide.jpg'),
+(11, 'zombie', 'juegos buenos', 5.00, 'zombicide.jpg'),
+(12, 'zombie', 'juegos buenos', 5.00, 'zombicide.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int NOT NULL,
+  `nombre_rol` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `nombre_rol`) VALUES
+(1, 'admin'),
+(2, 'vendedor'),
+(3, 'cliente');
 
 -- --------------------------------------------------------
 
@@ -160,16 +198,32 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `email` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `contraseña` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rol_id` int NOT NULL,
+  `estatus` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contraseña`, `fecha_registro`) VALUES
-(1, 'Mauricio', 'mauri@gmail.com', '$2y$10$8UcnltDf8wsYiKInauiYgeCjhgE/VxZSbF9qlVJN1qGqcuEbEfQNm', '2024-09-28 18:50:48'),
-(2, 'osmar', 'ormar@gmail.com', '$2y$10$uUdwzw4ZvwhyZIDa1qXAQOmJsnGNulzWBl2b55nR.BXOZ70seZ.7u', '2024-10-01 12:49:37');
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contraseña`, `fecha_registro`, `rol_id`, `estatus`) VALUES
+(1, 'Mauricio', 'mauri@gmail.com', '$2y$10$8UcnltDf8wsYiKInauiYgeCjhgE/VxZSbF9qlVJN1qGqcuEbEfQNm', '2024-09-28 18:50:48', 3, 1),
+(2, 'osmar', 'ormar@gmail.com', '$2y$10$uUdwzw4ZvwhyZIDa1qXAQOmJsnGNulzWBl2b55nR.BXOZ70seZ.7u', '2024-10-01 12:49:37', 3, 1),
+(3, 'juan', 'juan@gmail.com', '$2y$10$r4e7m/v/BpFWtlP7alVBSOqYXu94ecL7iYbro8qwn71MWQcVtLMv.', '2024-10-18 20:38:43', 3, 1),
+(4, 'alex', 'alex@gmail.com', '$2y$10$Ou/RO3E5trjaiB1HWvynXO2xvdBRM5zgwbx71Ql9uNDiU8BcTJWQa', '2024-10-18 21:17:39', 3, 0),
+(7, 'mauri', 'mauricio@gmail.com', '$2y$10$CR71nBiudchXn2MzyOjAvuOIL2bzPzQMJfsDaz1hPGymIzIzIOt7G', '2024-10-21 20:18:56', 1, 1),
+(8, 'ana', 'ana@gmail.com', '$2y$10$kJHnKjePrKRbjXfHN.jO5.MqQ7EpOd4G1I96Jd.rLnbPH6/jGChMK', '2024-10-21 20:21:15', 1, 1),
+(9, 'oli', 'oli@gmail.com', '$2y$10$DulAf9Q7YYYMtAKm8W27nez5Tq0Xa62Z4zAO/c76rhCtgLm3vQRLi', '2024-10-21 20:47:06', 2, 1),
+(10, 'mauri', 'mauriciomamaniflores09@gmail.com', '$2y$10$i9Z8.q/C9f.oGjJC1oyoxexXK5bwXHIocgvRhi4eparG/spbDZQLi', '2024-10-21 22:02:33', 3, 1),
+(11, 'mauri', 'mfmauricio200@gmail.com', '$2y$10$2W7qtFFk2tc1wUCXYnHTie5NgttHJ3bDtkWj7x/yED1FxA.oss486', '2024-10-21 22:25:16', 2, 1),
+(12, 'Marta Contreras Cabrera', 'marta@gmail.con', '$2y$10$EdFXSp9g2/mQ.9ouiudvouU.lSOEJ0CJqtF74hNht2VnuGMnZ8wEi', '2024-10-24 21:02:03', 1, 1),
+(13, 'joel', 'joel@gmail.com', '$2y$10$dHWP84nAiX3DmkiPlSkmcuI97mYyKlaVe24hSqH8WDcz3xIXHtME6', '2024-10-24 21:03:07', 2, 1),
+(14, 'ale', 'ale@gmail.com', '$2y$10$pj/9rMSqSbYlBAeoWrQCEujNJFRVfe8p6vWVn4OgBHqAbAk/mIgR6', '2024-10-24 21:03:58', 3, 1),
+(15, 'jhoel', 'jhoel@gmail.com', '$2y$10$xoW3hd0zwAb09qOHy0C7COvOn6P8khquTV07IfLMcasRGQajDC.jm', '2024-10-24 21:27:57', 1, 1),
+(16, 'ariel', 'ariel@gmail.com', '$2y$10$OMTXgsNKkU4I1h9ld8rHXOciqzYoqT2yng.xsBkYWluoad7GL0eSW', '2024-10-24 21:28:12', 2, 0),
+(17, 'dani', 'dani@gmail.com', '$2y$10$hje8fZugyQDGfKDVoZ/2se7TEZ3RLsGbyaCtpD1pb1E0d/7T4Ogra', '2024-10-24 21:28:35', 3, 1),
+(18, 'alan', 'alan@gmail.com', '$2y$10$sLBixczqh0w4/3AKb5Eu0.q32p5b4n.oNO.VUK8bCqJACqmNlGAKq', '2024-10-28 20:13:40', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -211,11 +265,18 @@ ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `fk_rol_id` (`rol_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -225,19 +286,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_de_compra`
 --
 ALTER TABLE `historial_de_compra`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
@@ -249,13 +310,19 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
@@ -280,6 +347,12 @@ ALTER TABLE `historial_de_compra`
 --
 ALTER TABLE `pedidos`
   ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_rol_id` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

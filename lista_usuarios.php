@@ -14,6 +14,7 @@ include 'functions.php';
 <body>
 <header>
         <div class="logo">Sistema TinkunaGames</div>
+        
         <div class="user-info">
             <span>Bolivia, <?php echo fechaC(); ?> | ADMIN - <?php echo $_SESSION['nombre']; ?> - <?php echo $_SESSION['correo']; ?></span>
             <img src="assets/img/user.png" alt="User Icon" class="user-icon">
@@ -52,10 +53,12 @@ include 'functions.php';
             $total_paginas = ceil($total_registro / $por_pagina);
 
             // Consulta de usuarios
-            $query = $conn->prepare("SELECT id, nombre, email, fecha_registro FROM usuarios ORDER BY id ASC LIMIT :desde, :por_pagina");
-            $query->bindValue(':desde', $desde, PDO::PARAM_INT);
-            $query->bindValue(':por_pagina', $por_pagina, PDO::PARAM_INT);
-            $query->execute();
+            // Consulta de usuarios con filtro de estatus
+                $query = $conn->prepare("SELECT id, nombre, email, fecha_registro FROM usuarios WHERE estatus = 1 ORDER BY id ASC LIMIT :desde, :por_pagina");
+                $query->bindValue(':desde', $desde, PDO::PARAM_INT);
+                $query->bindValue(':por_pagina', $por_pagina, PDO::PARAM_INT);
+                $query->execute();
+
 
             if ($query->rowCount() > 0) {
                 while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -100,5 +103,9 @@ include 'functions.php';
             </ul>
         </div>
     </section>
+
+    <script src="assets/js/functions.js" defer></script>
+    <script src="assets/js/icons.js" defer></script>
+    <script src="assets/js/jquery.min.js" defer></script>
 </body>
 </html>

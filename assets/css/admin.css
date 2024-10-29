@@ -390,6 +390,7 @@ table td{
 	background: initial;
 	padding: 10px;
 	border-radius: 10px;
+    background: #ffff;
 }
 .form_search .btn_search{
 	background: #1faac8;
