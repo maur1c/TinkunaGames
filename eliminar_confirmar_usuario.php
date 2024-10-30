@@ -4,9 +4,9 @@
     include "functions.php";
 
     // Verificar si el usuario tiene permiso de administrador
-    if ($_SESSION['rol'] != 1) {
-        header("location: ./");
-    }
+    //if ($_SESSION['rol'] != 1) {
+      //  header("location: ./");
+    //}
 
     if (!empty($_POST)) {
         // Impedir la eliminación del usuario con ID 1
