@@ -1,8 +1,10 @@
 <?php
 session_start();
 include 'functions.php'; // Incluir el archivo con la función de fecha
-if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 1) { // Verificar si el rol es admin (ID 1)
-    header('Location: login.php');
+
+// Verificar si el usuario tiene el rol de "vendedor" (rol_id = 2)
+if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 2) {
+    header(header: 'Location: login.php');
     exit();
 }
 ?>
@@ -12,8 +14,8 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 1) { // Verificar 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/admin.css"> <!-- Aquí enlazas tu archivo CSS -->
-    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="assets/css/admin.css"> <!-- Enlace a CSS -->
+    <title>Panel de Vendedor</title>
 </head>
 <body>
 <header> 
@@ -39,12 +41,13 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['rol_id'] != 1) { // Verificar 
 </header>
 
 
-    <!-- Incluir el archivo nav.php -->
+    <!-- Incluir el archivo nav.php para el menú de navegación -->
     <?php include 'nav.php'; ?>
 
     <section id="container">
-		<h1>Bienvenido al sistema</h1>
-	</section>
+        <h1>Bienvenido al sistema</h1>
+    </section>
+    
     <main>
         <h2>Estadísticas</h2>
         <div class="stats">

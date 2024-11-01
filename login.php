@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Redirigiendo al panel de administración...";
             header('Location: admin_dashboard.php'); // Redirigir al panel de admin
         } elseif ($usuario['rol_id'] == 2) { // Supongamos que el ID del rol 'vendedor' es 2
-            header('Location: vendedor_dashboard.php'); // Redirigir al panel de vendedor
+            header('Location: Vendedor_dashboard.php'); // Redirigir al panel de vendedor
         } else {
             header('Location: index.php'); // Redirigir a la página de productos para clientes
         }

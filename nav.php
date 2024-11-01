@@ -1,6 +1,10 @@
 <nav>
     <ul>
-        <li><a href="admin_dashboard.php"><i class="fas fa-home"></i> Inicio</a></li>
+        <li>
+            <a href="<?php echo ($_SESSION['rol_id'] == 1) ? 'admin_dashboard.php' : 'vendedor_dashboard.php'; ?>">
+                <i class="fas fa-home"></i> Inicio
+            </a>
+        </li>
         <?php 
         if ($_SESSION['rol_id'] == 1) { // Rol de Administrador
         ?>
