@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 29-10-2024 a las 19:53:52
+-- Tiempo de generación: 04-11-2024 a las 18:26:30
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -33,6 +33,37 @@ CREATE TABLE `carrito` (
   `producto_id` int DEFAULT NULL,
   `cantidad` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `idcliente` int NOT NULL,
+  `nit` int DEFAULT NULL,
+  `nombre` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `telefono` int DEFAULT NULL,
+  `direccion` text CHARACTER SET latin1 COLLATE latin1_swedish_ci,
+  `dateadd` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuario_id` int NOT NULL,
+  `estatus` int NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`idcliente`, `nit`, `nombre`, `telefono`, `direccion`, `dateadd`, `usuario_id`, `estatus`) VALUES
+(1, 12353535, 'mauri', 63998735, 'A.Ustriz', '2024-10-31 15:55:45', 2, 1),
+(2, 323342, 'osmar', 342543545, 'Bolivia-Cochabamba', '2024-10-31 17:22:23', 1, 1),
+(3, 45433543, 'jose', 63998735, 'A.Ustriz', '2024-10-31 17:24:54', 9, 1),
+(4, 325464, 'ana', 32543535, 'bolivia', '2024-10-31 17:25:34', 9, 1),
+(5, 3325343, 'marta', 44534534, 'Bolivia-Cochabamba', '2024-10-31 17:29:00', 9, 1),
+(6, 352353, 'lois', 224343243, 'Bolivia-Cochabamba', '2024-10-31 17:29:30', 9, 1),
+(7, 35234534, 'jose luis', 4534535, 'Bolivia-Cochabamba', '2024-10-31 17:30:14', 1, 1),
+(8, 345453, 'boli', 34543534, 'Bolivia-Cochabamba', '2024-10-31 17:30:41', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -185,7 +216,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `nombre_rol`) VALUES
 (1, 'admin'),
 (2, 'vendedor'),
-(3, 'cliente');
+(3, 'cliente'),
+(4, 'Supervisor');
 
 -- --------------------------------------------------------
 
@@ -208,8 +240,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contraseña`, `fecha_registro`, `rol_id`, `estatus`) VALUES
-(1, 'Mauricio', 'mauri@gmail.com', '$2y$10$8UcnltDf8wsYiKInauiYgeCjhgE/VxZSbF9qlVJN1qGqcuEbEfQNm', '2024-09-28 18:50:48', 3, 1),
-(2, 'osmar', 'ormar@gmail.com', '$2y$10$uUdwzw4ZvwhyZIDa1qXAQOmJsnGNulzWBl2b55nR.BXOZ70seZ.7u', '2024-10-01 12:49:37', 3, 1),
+(1, 'Mauricio', 'mauri@gmail.com', '$2y$10$tm1fx0BfT8hycUg/9nyDhe84MyjigRsR8RsOCoppIRK7otpFF3VIC', '2024-09-28 18:50:48', 1, 1),
+(2, 'osmar', 'ormar@gmail.com', '$2y$10$EOtNzWP4yW.prnyw9nl2Kuwn/62vvIyhqTq1yctR3gniu3ATUfWvO', '2024-10-01 12:49:37', 3, 1),
 (3, 'juan', 'juan@gmail.com', '$2y$10$r4e7m/v/BpFWtlP7alVBSOqYXu94ecL7iYbro8qwn71MWQcVtLMv.', '2024-10-18 20:38:43', 3, 1),
 (4, 'alex', 'alex@gmail.com', '$2y$10$Ou/RO3E5trjaiB1HWvynXO2xvdBRM5zgwbx71Ql9uNDiU8BcTJWQa', '2024-10-18 21:17:39', 3, 0),
 (7, 'mauri', 'mauricio@gmail.com', '$2y$10$CR71nBiudchXn2MzyOjAvuOIL2bzPzQMJfsDaz1hPGymIzIzIOt7G', '2024-10-21 20:18:56', 1, 1),
@@ -223,7 +255,11 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `contraseña`, `fecha_registro`
 (15, 'jhoel', 'jhoel@gmail.com', '$2y$10$xoW3hd0zwAb09qOHy0C7COvOn6P8khquTV07IfLMcasRGQajDC.jm', '2024-10-24 21:27:57', 1, 1),
 (16, 'ariel', 'ariel@gmail.com', '$2y$10$OMTXgsNKkU4I1h9ld8rHXOciqzYoqT2yng.xsBkYWluoad7GL0eSW', '2024-10-24 21:28:12', 2, 0),
 (17, 'dani', 'dani@gmail.com', '$2y$10$hje8fZugyQDGfKDVoZ/2se7TEZ3RLsGbyaCtpD1pb1E0d/7T4Ogra', '2024-10-24 21:28:35', 3, 1),
-(18, 'alan', 'alan@gmail.com', '$2y$10$sLBixczqh0w4/3AKb5Eu0.q32p5b4n.oNO.VUK8bCqJACqmNlGAKq', '2024-10-28 20:13:40', 2, 1);
+(18, 'alan', 'alan@gmail.com', '$2y$10$sLBixczqh0w4/3AKb5Eu0.q32p5b4n.oNO.VUK8bCqJACqmNlGAKq', '2024-10-28 20:13:40', 2, 1),
+(19, 'jairo', 'jairo@gmail.com', '$2y$10$WkNZ35U2ep30EHFULXJpjOsq7ZMMzoojXShBh7IfFbRBl8qJT8rqS', '2024-10-29 20:31:25', 1, 1),
+(20, 'osmar', 'osmar@host.com', '$2y$10$KuEtjUOnpFU84hHdgQv2L.dDr8AYrtD5TNQIeC21pwoNgsvcRHNGe', '2024-10-29 20:32:24', 2, 1),
+(21, 'luis', 'luis@gmail.com', '$2y$10$t/w3m9TS.BGuClkxGUDdgu1Zdk5uZWZi9tv9YtuVCz9SSKN8iYUdq', '2024-10-29 20:32:44', 2, 1),
+(22, 'grober', 'grober@gmail.com', '$2y$10$9MrOpq9ALPwn1bG7SO8IFOUR34DImwtQL3EtGnxIBAx0IgQ7vBPn2', '2024-10-29 20:33:10', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -236,6 +272,13 @@ ALTER TABLE `carrito`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usuario_id` (`usuario_id`),
   ADD KEY `producto_id` (`producto_id`);
+
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`idcliente`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `contactos`
@@ -289,6 +332,12 @@ ALTER TABLE `carrito`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `idcliente` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
@@ -316,13 +365,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
@@ -334,6 +383,12 @@ ALTER TABLE `usuarios`
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`);
+
+--
+-- Filtros para la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `historial_de_compra`
