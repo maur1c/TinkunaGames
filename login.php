@@ -1,9 +1,8 @@
-
 <?php
 include 'conexion.php'; // Conexión a la base de datos
 session_start(); // Iniciar la sesión
 
-$error = ''; // Variable para almacenar errores
+$alert = ''; // Variable para almacenar alertas o errores
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -29,16 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Redirigir según el rol usando el ID del rol
         if ($usuario['rol_id'] == 1) { // Supongamos que el ID del rol 'admin' es 1
-            echo "Redirigiendo al panel de administración...";
             header('Location: admin_dashboard.php'); // Redirigir al panel de admin
         } elseif ($usuario['rol_id'] == 2) { // Supongamos que el ID del rol 'vendedor' es 2
-            header('Location: Vendedor_dashboard.php'); // Redirigir al panel de vendedor
+            header('Location: vendedor_dashboard.php'); // Redirigir al panel de vendedor
         } else {
             header('Location: index.php'); // Redirigir a la página de productos para clientes
         }
         exit();
     } else {
-        $error = "Correo o contraseña incorrectos";
+        $alert = "Correo o contraseña incorrectos"; // Mostrar el error si no coincide
     }
 }
 ?>
@@ -48,40 +46,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-            text-align: center;
-        }
-        input {
-            margin: 10px;
-            padding: 10px;
-            width: 300px;
-        }
-        button {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+    <title>Login | Sistema TinkunaGames</title>
+     <!-- Link de FontAwesome para el ícono de casita -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/login.css">
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
-    
-    <?php if ($error): ?>
-        <p class="error"><?php echo $error; ?></p>
-    <?php endif; ?>
+      <!-- Botón en la esquina superior derecha en forma de casita -->
+      <div style="position: fixed; top: 20px; right: 20px;">
+        <a href="index.php" style="text-decoration: none; color: white;">
+            <i class="fas fa-home" style="font-size: 30px; color: #fff; background-color: #000000; padding: 10px; border-radius: 50%;"></i>
+        </a>
+    </div>
+    <section id="container">
+        <form action="login.php" method="POST">
+            <h3>Iniciar Sesión</h3>
+            <img src="assets/img/login.png" alt="Login">
+            
+            <!-- Campo para el email -->
+            <input type="email" name="email" placeholder="Email" required>
+            
+            <!-- Campo para la contraseña -->
+            <input type="password" name="contraseña" placeholder="Contraseña" required>
 
-    <form action="login.php" method="POST">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="contraseña" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+            <!-- Mensaje de error si hay alguno -->
+            <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
-    <p>No tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
+            <!-- Botón de submit -->
+            <input type="submit" value="INGRESAR">
+        </form>
+    </section>
 </body>
 </html>
